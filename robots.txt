@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ninjawrd551.github.io/module-help-2026/sitemap.xml
+Sitemap: https://ninjawrd551.github.io/sitemap.xml
