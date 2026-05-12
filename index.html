@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Module Help 2026 — справочник команд учебного стенда</title>
+  <meta name="description" content="Открытый учебный справочник команд по модулям 1, 2 и 3 для настройки Linux, сетевых сервисов, Samba, RAID, Docker, Nginx, OpenVPN, CUPS, rsyslog, Prometheus и Grafana.">
+  <meta name="keywords" content="Module Help 2026, Linux команды, учебный стенд, модуль 1, модуль 2, модуль 3, Samba, RAID, Docker, Nginx, OpenVPN, CUPS, rsyslog, Prometheus, Grafana">
+  <meta name="robots" content="index, follow">
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #162033;
+      --muted: #667085;
+      --line: #d9e1ec;
+      --accent: #315bdc;
+      --accent2: #1739a6;
+      --code: #0f172a;
+      --codeText: #e6edf7;
+      --soft: #eef3ff;
+      --ok: #137a4d;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #eef3ff 0%, var(--bg) 360px);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    header {
+      padding: 34px 18px 22px;
+      border-bottom: 1px solid var(--line);
+    }
+    .wrap {
+      width: min(1160px, calc(100% - 28px));
+      margin: 0 auto;
+    }
+    .hero {
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(217,225,236,.95);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 16px 45px rgba(31, 50, 88, .08);
+      backdrop-filter: blur(10px);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(26px, 4vw, 44px);
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+    }
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      max-width: 900px;
+      font-size: 16px;
+    }
+    .stats {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 7px 11px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: #344054;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    input[type="search"] {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 16px;
+      font-size: 16px;
+      background: #fff;
+      outline: none;
+    }
+    input[type="search"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(49,91,220,.12);
+    }
+    .btn {
+      border: 0;
+      border-radius: 14px;
+      background: var(--accent);
+      color: white;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .15s ease;
+      white-space: nowrap;
+    }
+    .btn:hover { background: var(--accent2); transform: translateY(-1px); }
+    .btn.light {
+      background: var(--soft);
+      color: var(--accent2);
+      border: 1px solid #cdd8ff;
+    }
+    main { padding: 24px 0 42px; }
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 18px;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      padding: 10px 0;
+      background: rgba(244,247,251,.92);
+      backdrop-filter: blur(8px);
+    }
+    .tab {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 9px 14px;
+      cursor: pointer;
+      color: #344054;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .tab.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 10px 24px rgba(31, 50, 88, .06);
+      overflow: hidden;
+    }
+    .card-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      background: var(--soft);
+      color: var(--accent2);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+    h2 {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.25;
+    }
+    pre {
+      margin: 0;
+      padding: 18px;
+      background: var(--code);
+      color: var(--codeText);
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 14px;
+      line-height: 1.55;
+      tab-size: 2;
+    }
+    code {
+      font-family: Consolas, Monaco, "Courier New", monospace;
+    }
+    .empty {
+      display: none;
+      background: #fff;
+      border: 1px dashed var(--line);
+      border-radius: 18px;
+      padding: 22px;
+      color: var(--muted);
+      text-align: center;
+    }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      background: #fff;
+    }
+    .note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 680px) {
+      .toolbar { grid-template-columns: 1fr; }
+      .card-head { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      .hero { padding: 18px; border-radius: 18px; }
+      pre { font-size: 13px; }
+      .tabs { position: static; }
+    }
+    @media print {
+      body { background: #fff; }
+      .toolbar, .tabs, .btn, footer { display: none !important; }
+      .card { break-inside: avoid; box-shadow: none; }
+      pre { white-space: pre-wrap; color: #000; background: #fff; border-top: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <section class="hero">
+        <h1>Module Help 2026 — справочник команд учебного стенда</h1>
+        <p class="lead">Открытая учебная страница с командами по модулям. Подходит для подготовки, повторения и выполнения лабораторных работ в разрешённой учебной среде.</p>
+        <div class="stats">
+          <span class="pill">Разделов: <span id="totalCount"></span></span>
+          <span class="pill">Модуль 1 добавлен</span>
+          <span class="pill">Поиск и копирование</span>
+        </div>
+        <div class="toolbar">
+          <input id="search" type="search" placeholder="Поиск по командам, сервисам и заданиям..." autocomplete="off">
+          <button class="btn light" id="copyVisible">Копировать видимые блоки</button>
+        </div>
+        <p class="note">Перед публикацией в открытом интернете замените реальные пароли и приватные данные, если они есть в учебных файлах.</p>
+      </section>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="tabs" id="tabs"></nav>
+    <div class="empty" id="empty">Ничего не найдено. Попробуйте другой запрос.</div>
+    <section class="grid" id="cards"></section>
+  </main>
+
+  <footer>
+    <div class="wrap">Учебный справочник. Открытый доступ для индексации поисковыми системами.</div>
+  </footer>
+
+  <script>
+    const DATA = [{"group": "Модуль 1", "title": "Задание 1 2", "body": "Задание №1\nНастройка имён хостов\n\nhostnamectl set-hostname isp.au-team.irpo; exec bash\n\nhostnamectl set-hostname hq-rtr.au-team.irpo; exec bash\n\nhostnamectl set-hostname hq-srv.au-team.irpo; exec bash\n\nhostnamectl set-hostname hq-cli.au-team.irpo; exec bash\n\nhostnamectl set-hostname br-rtr.au-team.irpo; exec bash\n\nhostnamectl set-hostname br-srv.au-team.irpo; exec bash\n\n\nНастройка IP адресов\n===ИНТЕРФЕЙСЫ ISP===\n\nmkdir -p /etc/net/ifaces/enp7s{2,3}\n\necho 'TYPE=eth' | tee /etc/net/ifaces/enp7s{2,3}/options\necho '172.16.1.1/28' > /etc/net/ifaces/enp7s2/ipv4address\necho '172.16.2.1/28' > /etc/net/ifaces/enp7s3/ipv4address\n\nsystemctl restart network\n=======================\n\n\n\n\n\n\n\n===ИНТЕРФЕЙСЫ BR-RTR===\n\nmkdir -p /etc/net/ifaces/{enp7s{1,2},gre1}\n\necho 'TYPE=eth' | tee /etc/net/ifaces/enp7s{1,2}/options\n\n-------to ISP------\n\necho '172.16.2.2/28' > /etc/net/ifaces/enp7s1/ipv4address\n\necho 'default via 172.16.2.1' > /etc/net/ifaces/enp7s1/ipv4route\n\necho 'nameserver 8.8.8.8' > /etc/net/ifaces/enp7s1/resolv.conf\n\n-------to BR-SRV---\n\necho '192.168.0.1/28' > /etc/net/ifaces/enp7s2/ipv4address\n\n-------включение маршрутизации---------\n\nvim /etc/net/sysctl.conf\n\nsystemctl restart network\n=======================\n\n\n\n\n\n\n\n\n\n\n===ИНТЕРФЕЙСЫ BR-SRV===\n\necho 'TYPE=eth' > /etc/net/ifaces/enp7s1/options\n\necho '192.168.0.2/28' > /etc/net/ifaces/enp7s1/ipv4address\n\necho 'default via 192.168.0.1' > /etc/net/ifaces/enp7s1/ipv4route\n\necho $'search au-team.irpo\\nnameserver 192.168.100.2' > /etc/net/ifaces/enp7s1/resolv.conf\n\nsystemctl restart network\n=========================\n\n\n===ИНТЕРФЕЙСЫ HQ-RTR===\nmkdir -p /etc/net/ifaces/{enp7s{1,2},vlan{100,200,999},gre1}\n\necho 'TYPE=eth' | tee /etc/net/ifaces/enp7s{1,2}/options\n\n-------to ISP------\n\necho '172.16.1.2/28' > /etc/net/ifaces/enp7s1/ipv4address\n\necho 'default via 172.16.1.1' > /etc/net/ifaces/enp7s1/ipv4route\n\necho 'nameserver 8.8.8.8' > /etc/net/ifaces/enp7s1/resolv.conf\n\n--------настройка VLAN-----------\n\necho $'100\\n200\\n999' | xargs -i bash -c 'echo -e \"TYPE=vlan\\nHOST=enp7s2\\nVID={}\" > /etc/net/ifaces/vlan{}/options'\n\ncat /etc/net/ifaces/vlan999/options\n\necho '192.168.100.1/27' > /etc/net/ifaces/vlan100/ipv4address\n\necho '192.168.200.1/24' > /etc/net/ifaces/vlan200/ipv4address\n\necho '192.168.99.1/29' > /etc/net/ifaces/vlan999/ipv4address\n\n-------включение маршрутизации---------\n\nvim /etc/net/sysctl.conf\n\nsystemctl restart network\n=========================\n\n\n\n\n\n\n===ИНТЕРФЕЙСЫ HQ-SRV===\n\necho 'TYPE=eth' > /etc/net/ifaces/enp7s1/options\n\necho '192.168.100.2/27' > /etc/net/ifaces/enp7s1/ipv4address\n\necho 'default via 192.168.100.1' > /etc/net/ifaces/enp7s1/ipv4route\n\necho 'nameserver 8.8.8.8' > /etc/net/ifaces/enp7s1/resolv.conf\n\nsystemctl restart network\n=========================\n\n\n\n\n\n\n\n\nЗадание №2\nВыполняется на ISP\n\nvim /etc/net/sysctl.conf\nnet.ipv4.ip_forward = 1\n\nsystemctl restart network\n\napt-get update && apt-get install nftables && apt-get install nano -y\n\nnano /etc/nftables/nftables.nft\n\n==\n#!/usr/sbin/nft -f\n\nflush ruleset\n\ntable ip nat {\n    chain postrouting {\n        type nat hook postrouting priority srcnat;\n        oifname \"enp7s1\" masquerade\n    }\n}\n==\n\nsystemctl enable --now nftables\nsystemctl start nftables\nnft flush ruleset\nnft -f /etc/nftables/nftables.nft\n\n\nnft list ruleset\nКоманда должна вывести текст из предыдущего действия.\n\nsysctl net.ipv4.ip_forward\n\nping -c4 ya.ru"}, {"group": "Модуль 1", "title": "Задание 3", "body": "==========HQ-SRV==========\n\nuseradd -u 2026 sshuser\n\necho \"sshuser:P@ssw0rd\" | chpasswd\n\nusermod -aG wheel sshuser\n\necho \"WHEEL_USERS ALL=(ALL:ALL) NOPASSWD: ALL\" > /etc/sudoers.d/sshuser\n\nsu -l sshuser\n\nsudo id\n\n\n\n==========BR-SRV==========\n\nuseradd -u 2026 sshuser\n\necho \"sshuser:P@ssw0rd\" | chpasswd\n\nusermod -aG wheel sshuser\n\necho \"WHEEL_USERS ALL=(ALL:ALL) NOPASSWD: ALL\" > /etc/sudoers.d/sshuser\n\nsu -l sshuser\n\nsudo id\n\n==========HQ-RTR==========\n\nuseradd net_admin\n\necho \"net_admin:P@ssw0rd\" | chpasswd\n\nusermod -aG wheel net_admin\n\napt-get update && apt-get install sudo -y\n\necho \"WHEEL_USERS ALL=(ALL:ALL) NOPASSWD: ALL\" > /etc/sudoers.d/net_admin\n\nsu -l net_admin\n\nsudo id\n\n\n\n==========BR-RTR==========\n\nuseradd net_admin\n\necho \"net_admin:P@ssw0rd\" | chpasswd\n\nusermod -aG wheel net_admin\n\napt-get update && apt-get install sudo\n\necho \"WHEEL_USERS ALL=(ALL:ALL) NOPASSWD: ALL\" > /etc/sudoers.d/net_admin\n\nsu -l net_admin\n\nsudo id"}, {"group": "Модуль 1", "title": "Задание 4 5", "body": "=====HQ-SRV=====\n\nvim /etc/openssh/sshd_config\n\nPort 2026\nAllowUsers sshuser\nMaxAuthTries 2\nBanner /etc/openssh/ssh_banner\n\n\necho \"Authorized access only\" | tee /etc/openssh/ssh_banner\n\nПерезагружаем SSH-сервис:\n\nsystemctl restart sshd\n\nПроверка:\nС машины HQ-RTR подключаемся по SSH к машине HQ-SRV\n# ssh -p 2026 sshuser@192.168.100.2\n\n\n=====BR-SRV=====\n\nvim /etc/openssh/sshd_config\n\nPort 2026\nAllowUsers sshuser\nMaxAuthTries 2\nBanner /etc/openssh/ssh_banner\n\n\necho \"Authorized access only\" | tee /etc/openssh/ssh_banner\n\nПерезагружаем SSH-сервис:\n\nsystemctl restart sshd\n\nПроверка:\nС машины BR-RTR подключаемся по SSH к машине BR-SRV\n# ssh -p 2026 sshuser@192.168.0.2"}, {"group": "Модуль 1", "title": "Задание 6", "body": "===BR-RTR===\r\n\r\nvim /etc/net/ifaces/gre1/options\r\n\r\nTYPE=iptun\r\nTUNTYPE=gre\r\nTUNLOCAL=172.16.2.2\r\nTUNREMOTE=172.16.1.2\r\nTUNTTL=64\r\nTUNOPTIONS='ttl 64'\r\n\r\necho \"10.10.10.2/30\" > /etc/net/ifaces/gre1/ipv4address\r\nsystemctl restart network\r\n\r\nip -br -c a\r\n\r\n===HQ-RTR===\r\n\r\nvim /etc/net/ifaces/gre1/options\r\n\r\nTYPE=iptun\r\nTUNTYPE=gre\r\nTUNLOCAL=172.16.1.2\r\nTUNREMOTE=172.16.2.2\r\nTUNTTL=64\r\nTUNOPTIONS='ttl 64'\r\n\r\necho \"10.10.10.1/30\" > /etc/net/ifaces/gre1/ipv4address\r\nsystemctl restart network\r\n\r\nip -br -c a\r\n\r\n======================================\r\n\r\nping 10.10.10.2 -c 3"}, {"group": "Модуль 1", "title": "Задание 7", "body": "===HQ-RTR===\napt-get update && apt-get install frr -y\n\nsed -i 's/ospfd=no/ospfd=yes/' /etc/frr/daemons ; grep ospf /etc/frr/daemons\n\nvim /etc/frr/frr.conf\n\ninterface gre\n no ip ospf passive\nexit\n!\ninterface gre1\n ip ospf area 0\n ip ospf authentication\n ip ospf authentication-key P@ssw0rd\n no ip ospf passive\nexit\n!\ninterface vlan100\n ip ospf area 0\nexit\n!\ninterface vlan200\n ip ospf area 0\nexit\n!\ninterface vlan999\n ip ospf area 0\nexit\n!\nrouter ospf\n passive-interface default\nexit\n\n\nsystemctl enable --now frr\n\nsystemctl restart network\n\n\n\n\n===BR-RTR===\napt-get update && apt-get install frr -y\n\nsed -i 's/ospfd=no/ospfd=yes/' /etc/frr/daemons ; grep ospf /etc/frr/daemons\n\nvim /etc/frr/frr.conf\n\n\ninterface gre\n no ip ospf passive\nexit\n!\ninterface gre1\n ip ospf area 0\n ip ospf authentication\n ip ospf authentication-key P@ssw0rd\n no ip ospf passive\nexit\n!\ninterface enp7s2\n ip ospf area 0\nexit\n!\nrouter ospf\n passive-interface default\nexit\n\n\nsystemctl enable --now frr\n\nsystemctl restart network"}, {"group": "Модуль 1", "title": "Задание 8", "body": "===HQ-RTR + BR-RTR===\r\n\r\napt-get install nftables nano -y\r\n\r\nnano /etc/nftables/nftables.nft\r\n\r\n#!/usr/sbin/nft -f\r\nflush ruleset\r\n\r\ntable ip nat {\r\n    chain postrouting {\r\n        type nat hook postrouting priority srcnat;\r\n        oifname \"enp7s1\" masquerade\r\n    }\r\n}\r\n\r\nsystemctl enable --now nftables\r\n\r\nsystemctl restart nftables.service"}, {"group": "Модуль 1", "title": "Задание 9", "body": "===HQ-RTR===\r\n\r\napt-get install dnsmasq -y\r\n\r\n--------смена DNS-----------\r\n\r\nrm -f /etc/net/ifaces/enp7s1/resolv.conf\r\n\r\necho $'search au-team.irpo\\nnameserver 192.168.100.2' > /etc/net/ifaces/vlan100/resolv.conf\r\n\r\n--------DHCP------------\r\n\r\nsed -i 's/AUTO_LOCAL_RESOLVER=yes/AUTO_LOCAL_RESOLVER=no/' /etc/sysconfig/dnsmasq ; grep AUTO_LOCAL_RESOLVER /etc/sysconfig/dnsmasq\r\n\r\nnano /etc/dnsmasq.conf\r\n\r\nport=0\r\ninterface=vlan200\r\nlisten-address=192.168.200.1\r\ndhcp-authoritative\r\ndhcp-range=interface:vlan200,192.168.200.2,192.168.200.2,255.255.255.240,6h\r\ndhcp-option=3,192.168.200.1\r\ndhcp-option=6,192.168.100.2\r\nleasefile-ro\r\n\r\n\r\n\r\n\r\n\r\nsystemctl enable --now dnsmasq ; ss -lun | grep 67\r\n\r\nsystemctl restart network\r\n\r\ncat /etc/resolv.conf"}, {"group": "Модуль 1", "title": "Задание 10", "body": "===HQ-SRV===\n\napt-get update && apt-get install bind bind-utils nano -y\n\necho $'search au-team.irpo\\nnameserver 127.0.0.1' > /etc/net/ifaces/enp7s1/resolv.conf\n\nrndc-confgen -a -c /etc/bind/rndc.key\n\n\nnano /etc/bind/options.conf\n\noptions {\n    listen-on { 127.0.0.1; 192.168.100.2; };\n    forwarders { 77.88.8.7; 77.88.8.3; };\n    recursion yes;\n    allow-recursion { any; };\n    allow-query { any; };\n    dnssec-validation no;\n    directory \"/etc/bind/zone\";\n    dump-file \"/var/run/named/named_dump.db\";\n    statistics-file \"/var/run/named/named.stats\";\n    pid-file \"/var/run/named/named.pid\";\n};\n\nlogging {\n    category default { default_syslog; };\n};\n\nzone \"au-team.irpo\" {\n    type master;\n    file \"au-team.irpo\";\n};\n\nzone \"168.192.in-addr.arpa\" {\n    type master;\n    file \"168.192.in-addr.arpa\";\n};\n\n\n\n\n\n==========================================\ncp -r /etc/bind/zone/127.in-addr.arpa /etc/bind/zone/au-team.irpo\n\nnano /etc/bind/zone/au-team.irpo\n\n$TTL 1D\n@ IN SOA au-team.irpo. root.au-team.irpo. (\n\t2025020600\n    12H\n    1H\n    1W\n    1H\n)\n@       IN NS    hq-srv.au-team.irpo.\n\nhq-rtr  IN A     192.168.100.1\nhq-srv  IN A     192.168.100.2\nhq-cli  IN A     192.168.200.2\nbr-rtr  IN A     192.168.1.1\nbr-srv  IN A     192.168.1.2\ndocker  IN A     172.16.1.1\nweb     IN A     172.16.2.1\n\n\n\n\n\n\n==========================================\ncp -r /etc/bind/zone/127.in-addr.arpa /etc/bind/zone/168.192.in-addr.arpa\n\nnano /etc/bind/zone/168.192.in-addr.arpa\n\n$TTL 1D\n@ IN SOA au-team.irpo. root.au-team.irpo. (\n    2025020600\n    12H\n    1H\n    1W\n    1H\n)\n@       IN NS    au-team.irpo.\n\n1.100   IN PTR   hq-rtr.au-team.irpo.\n2.100   IN PTR   hq-srv.au-team.irpo.\n2.200   IN PTR   hq-cli.au-team.irpo.\n\n\n\n\n\n==========================================\n\nchown :named /etc/bind/zone/au-team.irpo /etc/bind/zone/168.192.in-addr.arpa\n\nsystemctl enable --now bind\n\nservice network restart\n\nsystemctl restart bind.service\n\nhost br-rtr\n\nhost -t PTR 192.168.100.2"}, {"group": "Модуль 1", "title": "Задание 11", "body": "apt-get update && apt-get install tzdata -y\n\ntimedatectl set-timezone Asia/Novosibirsk\n\ntimedatectl"}, {"group": "Общие команды", "title": "Базовые команды", "body": "login: root\r\npass: toor\r\n\r\nip -c a\r\n\r\ndhclient\r\n\r\nnano /etc/network/interfaces\r\n\r\nreboot"}, {"group": "Модуль 2", "title": "Задание 1", "body": "=========BR-SRV=========\n\n------------SambaDC------------\necho \"nameserver 192.168.1.10\" >> /etc/net/ifaces/enp7s1/resolv.conf\n\nsystemctl restart network\n\ncat /etc/resolv.conf\n\nping ya.ru -c 2\n\napt-get update && apt-get install task-samba-dc -y\n\nrm -f /etc/samba/smb.conf\n\nrm -rf {/var/lib/samba, /var/cache/samba}\n\nmkdir -p /var/lib/samba/sysvol\n\nsamba-tool domain provision\n\n\"Везде соглашаемся со значениями по умолчанию (Жмём Enter)\"\n\"Пароль задаём: P@ssw0rd\"\n\nmv /etc/krb5.conf /etc/krb5.conf.back\n\ncp /var/lib/samba/private/krb5.conf /etc/krb5.conf\n\nsystemctl enable --now samba\n\nsystemctl status samba\n\nsamba-tool domain info 127.0.0.1\n\n================================\n------------DNS------------\n\nsamba-tool dns add br-srv.au-team.irpo au-team.irpo hq-srv A 192.168.1.10 -U Administrator\n\nsamba-tool dns add br-srv.au-team.irpo au-team.irpo hq-rtr A 192.168.1.1 -U Administrator\n\nsamba-tool dns add br-srv.au-team.irpo au-team.irpo br-rtr A 192.168.3.1 -U Administrator\n\nsamba-tool dns add br-srv.au-team.irpo au-team.irpo web.au-team.irpo A 172.16.1.1 -U Administrator\n\nsamba-tool dns add br-srv.au-team.irpo au-team.irpo docker.au-team.irpo A 172.16.2.1 -U Administrator\n\nsamba-tool dns query br-srv.au-team.irpo au-team.irpo @ ALL -U administrator\n\nsed -i 's/nameserver 192.168.1.10/nameserver 127.0.0.1/' /etc/net/ifaces/enp7s1/resolv.conf \n\nsystemctl restart network\n\ncat /etc/resolv.conf\n\nkinit administrator@AU-TEAM.IRPO\n\n================================\n------------Users------------\n\nsamba-tool group add hq\n\nfor i in {1..5}; do samba-tool user add hquser$i P@ssw0rd; done\n\nfor i in {1..5}; do samba-tool group addmembers hq hquser$i; done\n\nsamba-tool group listmembers hq\n\n================================\n\n=========HQ-RTR=========\nsed -i 's/192.168.1.10/192.168.3.10/' /etc/dnsmasq.conf; systemctl restart dnsmasq\n\ncat /etc/dnsmasq.conf\n\n=========HQ-CLI=========\n!!!Работаем в графической оболочке HQ-CLI (под user)!!!\n\nна HQ-CLI перезагружаем сеть, проверяем DNS, вводим в домен\n\nacc\n\nПользователи (Аутентификация) -> Галочка (Домен Active Directory) -> Применить -> Пароль P@ssw0rd\nЕсли настроено всё верно, появится окно (Добро пожаловать в домен AU-TEAM.IRPO)\nПерезагружаем машину\n\nМеню -> Выйти -> Перезагрузить\n\nПользователь: hquser1\nПароль: P@ssw0rd\n\n!!!Работаем в консольной оболочке HQ-CLI (под root)!!!\n\ncontrol libnss-role \n(Должна выдать enabled)\n\nroleadd hq wheel\n\necho \"WHEEL_USERS ALL=(ALL:ALL) /bin/cat, /bin/grep, /usr/bin/id\" >> /etc/sudoers\n\ntail /etc/sudoers\n\n!!!Работаем в графической оболочке HQ-CLI (под user)!!!\n\nПерезагружаем машину\n\nМеню -> Выйти -> Перезагрузить\n\nПользователь: hquser1\nПароль: P@ssw0rd\n\nОткрываем терминал и проверяем команду\n\nsudo id\n*вводим пароль*\nsudo cat /etc/resolv.conf\n*вводим пароль*\nsudo grep\n*вводим пароль*"}, {"group": "Модуль 2", "title": "Задание 2 3", "body": "=====HQ-SRV=====\n\n==================RAID==================\nlsblk\n\nparted /dev/sdb\n\tmklabel msdos\n\tmkpart primary 1MiB 100%\n\tset 1 raid on\n\tprint\n\tselect /dev/sdc\n\tmklabel msdos\n\tmkpart primary 1MiB 100%\n\tset 1 raid on\n\tprint\n\tquit\n\nmdadm --create /dev/md0 --level=0 --raid-devices=2 /dev/sdb1 /dev/sdc1\n\nmdadm --detail --scan >> /etc/mdadm.conf\n\nmdadm --detail --scan\n\nmkfs.ext4 /dev/md0\n\nmkdir /raid\n\ncp /etc/fstab /etc/fstab.back\n\necho \"/dev/md0 /raid ext4 defaults 0 0 \" >> /etc/fstab\n\nmount -av\n\ndf -T\n\n==================NFS==================\napt-get update && apt-get install nfs-server nfs-utils -y\n\nmkdir /raid/nfs\n\nchmod 777 /raid/nfs\n\ncp /etc/exports /etc/exports.back\n\necho \"/raid/nfs 192.168.2.0/27(rw,no_subtree_check,no_root_squash)\" >> /etc/exports\n\nsystemctl enable --now nfs-server\n\n==================HQ-CLI==================\n!!!Работаем в консольной оболочке HQ-CLI (под root)!!!\n\nmkdir /mnt/nfs\n\nchmod -R 777 /mnt/nfs\n\nshowmount -e hq-srv\n\ncp /etc/fstab /etc/fstab.back\n\necho \"192.168.1.10:/raid/nfs /mnt/nfs nfs rw,soft,_netdev 0 0 \" >> /etc/fstab\n\nmount -av\n\ndf -T\n\n---создать файл на HQ-CLI---\n\ntouch /mnt/nfs/test_file\n\nls -l /mnt/nfs/test_file\n\n---посмотреть на HQ-SRV---\n\nls -l /raid/nfs"}, {"group": "Модуль 2", "title": "Задание 4", "body": "=====ISP=====\r\n\r\ncontrol chrony server\r\n\r\nsed -i 's/pool pool.ntp.org iburst/pool pool.ntp.org iburst prefer minstratum 4/' /etc/chrony.conf | grep pool /etc/chrony.conf\r\n\r\nsed -i 's/\\#local stratum 10/local stratum 5/' /etc/chrony.conf | grep \"local stratum\" /etc/chrony.conf\r\n\r\nsystemctl restart chronyd\r\n===============================\r\n\r\n\r\n\r\n===Далее команда выполняется на машинах HQ-SRV, BR-RTR и BR-SRV===\r\n\r\nsed -i 's/pool pool.ntp.org iburst/server 172.16.1.1 iburst/' /etc/chrony.conf && systemctl restart chronyd\r\n\r\n---Через 10 секунд проверяем---\r\n\r\nchronyc sources\r\n===============================\r\n\r\n\r\n\r\n\r\n-==На HQ-CLI выполняем другую команду===\r\n\r\necho \"server 172.16.1.1 iburst\" >> /etc/chrony.conf && systemctl restart chronyd\r\n\r\n---Через 10 секунд проверяем---\r\n\r\nchronyc sources\r\n\r\n\r\n---Вывод команды (chronyc sources) должен быть приблизительно следующим---\r\n\r\nMS Name/IP address         Stratum Poll Reach LastRx Last sample               \r\n===============================================================================\r\n^* 172.16.1.1                    5   6    17     1  +1438ns[  +43us] +/-   38ms"}, {"group": "Модуль 2", "title": "Задание 5", "body": "===BR-SRV===\r\n\r\napt-get install ansible sshpass -y\r\n\r\ncp -r /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.back\r\n\r\nrm -rf /etc/ansible/ansible.cfg\r\n\r\nvim /etc/ansible/ansible.cfg\r\n\r\n[defaults]\r\n\r\nhost_key_checking = False\r\ninterpreter_python=/usr/bin/python3\r\ninventory       = /etc/ansible/hosts\r\n\r\n=====================================\r\n\r\nvim /etc/ansible/hosts\r\n\r\nHQ-SRV ansible_user=user ansible_password=resu ansible_port=2026\r\nHQ-RTR ansible_user=net_admin ansible_password=P@ssw0rd ansible_port=2026\r\nBR-RTR ansible_user=net_admin ansible_password=P@ssw0rd ansible_port=2026\r\nHQ-CLI ansible_user=user ansible_password=resu ansible_port=2026\r\n\r\n=====================================\r\n\r\nПроверить состояние службы SSH на хостах\r\n(все должны ответить \"pong\")\r\n\r\nansible all -m ping"}, {"group": "Модуль 2", "title": "Задание 6", "body": "===BR-SRV===\r\n\r\napt-get install docker-engine docker-compose-v2 -y\r\n\r\nsystemctl enable --now docker.service\r\n\r\nmount -o loop /dev/sr0 /mnt/ -v\r\n\r\nls -l /mnt/docker/\r\n\r\ncat /mnt/docker/readme.txt\r\n\r\ndocker load < /mnt/docker/site_latest.tar\r\n\r\ndocker load < /mnt/docker/mariadb_latest.tar\r\n\r\ndocker image ls\r\n\r\n\r\n===docker-compose.yml===\r\n\r\ncat << EOF > docker-compose.yml\r\nservices:\r\n  database:\r\n    container_name: db\r\n    image: mariadb:latest\r\n    restart: always\r\n    ports: \r\n      - \"3306:3306\"\r\n    environment:\r\n      MARIADB_DATABASE: testdb\r\n      MARIADB_USER: testc\r\n      MARIADB_PASSWORD: P@ssw0rd\r\n      MARIADB_ROOT_PASSWORD: P@ssw0rd\r\n    volumes:\r\n      - db_data:/var/lib/mysql\r\n      \r\n  app:\r\n    container_name: tespapp\r\n    image: site:latest\r\n    restart: always\r\n    ports: \r\n      - \"8080:8000\"\r\n    environment: \r\n      DB_HOST: database\r\n      DB_PORT: 3306\r\n      DB_NAME: testdb\r\n      DB_USER: testc\r\n      DB_PASS: P@ssw0rd\r\n      DB_TYPE: maria\r\n    depends_on: \r\n      - database\r\nvolumes:\r\n  db_data:\r\nEOF\r\n\r\n==============\r\ndocker compose config\r\n\r\ndocker compose up -d\r\n\r\ndocker ps\r\n\r\nss -ltnp4 | grep 8080\r\n\r\nПереходим на HQ-CLI, заходим по 192.168.3.10:8080\r\n\r\nПометка: По заданию мы должны попадать на сайт через домен\r\ndocker.au-team.irpo, но мы пока этого сделать не можем,\r\nт.к. у нас не настроен реверс-прокси** на ISP (nginx)\r\n**Выполняется в задании №9\r\n\r\nCоздаем запись\r\n\r\ndocker rm -f $(docker ps -qa)\r\n\r\nПроверяем, что сайт перестал работать\r\n\r\ndocker compose up -d\r\n\r\nПроверяем, что сайт поднялся и наша запись осталась"}, {"group": "Модуль 2", "title": "Задание 7", "body": "===HQ-SRV===\r\n\r\nmount -o loop /dev/sr0 /mnt/ -v\r\n\r\napt-get install lamp-server -y\r\n\r\ncp /mnt/web/index.php /var/www/html\r\n\r\ncp /mnt/web/logo.png /var/www/html\r\n\r\nsystemctl enable --now mariadb\r\n======================================\r\n\r\nmariadb -e \"CREATE DATABASE webdb;\"\r\n\r\nmariadb -e \"\r\n\r\nCREATE USER 'web'@'localhost' IDENTIFIED BY 'P@ssw0rd';\r\n\r\nGRANT ALL PRIVILEGES ON webdb.* TO 'web'@'localhost';\r\n\r\n\"\r\n\r\nmariadb webdb < /mnt/web/dump.sql\r\n\r\nmariadb -e \"USE webdb; SHOW TABLES;\"\r\n=====================================\r\n\r\nvim /var/www/html/index.php\r\n\r\n$servername = \"localhost\";\r\n\r\n$username = \"web\";\r\n\r\n$password = \"P@ssw0rd\";\r\n\r\n$dbname = \"webdb\";\r\n\r\nsystemctl enable --now httpd2.service\r\n============================================\r\n\r\nПереходим на HQ-CLI, заходим по 192.168.1.10\r\n\r\nПометка: По заданию мы должны попадать на сайт через домен\r\nweb.au-team.irpo + аутенфикация по паролю,\r\nно мы пока этого сделать не можем,\r\nт.к. у нас не настроен реверс-прокси** на ISP (nginx)\r\n**Выполняется в задании №9"}, {"group": "Модуль 2", "title": "Задание 8", "body": "===HQ-RTR===\r\n\r\nnft add chain nat prerouting { type nat hook prerouting priority dstnat \\; }\r\n\r\nnft add rule nat prerouting iif \"enp7s1\" tcp dport 2026 dnat to 192.168.1.10\r\n\r\nnft add rule nat prerouting iif \"enp7s1\" tcp dport 8080 dnat to 192.168.1.10:80\r\n\r\nnft list ruleset\r\n\r\nnft list ruleset > /etc/nftables/nftables.nft\r\n\r\nsystemctl restart nftables\r\n\r\nnft list ruleset\r\n================================\r\n\r\n===BR-RTR===\r\n\r\nnft add chain nat prerouting { type nat hook prerouting priority dstnat \\; }\r\n\r\nnft add rule nat prerouting iif \"enp7s1\" tcp dport { 8080, 2026 } dnat to 192.168.3.10\r\n\r\nnft list ruleset\r\n\r\nnft list ruleset > /etc/nftables/nftables.nft\r\n\r\nsystemctl restart nftables\r\n\r\nnft list ruleset\r\n\r\n================================"}, {"group": "Модуль 2", "title": "Задание 9 10", "body": "===ISP===\n\napt-get update && apt-get install nginx -y\n\nvim /etc/nginx/sites-available.d/r-proxy.conf\n\n====\nserver {\nlisten 80;\nserver_name web.au-team.irpo;\nlocation / {\nproxy_pass http://172.16.1.10:8080;\nproxy_set_header Host $host;\nproxy_set_header X-Real-IP $remote_addr;\nproxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\nproxy_set_header X-Forwarded-Proto $scheme;\nauth_basic \"Restricted Access\";\nauth_basic_user_file /etc/nginx/.htpasswd;\n}\n}\nserver {\nlisten 80;\nserver_name docker.au-team.irpo;\nlocation / {\nproxy_pass http://172.16.2.10:8080;\nproxy_set_header Host $host;\nproxy_set_header X-Real-IP $remote_addr;\nproxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\nproxy_set_header X-Forwarded-Proto $scheme;\n}\n}\n====\n\nln -s /etc/nginx/sites-available.d/r-proxy.conf /etc/nginx/sites-enabled.d/\n\nnginx -t\n\nsystemctl enable --now nginx\n\nsystemctl status nginx\n\n=======================================\n\napt-get install apache2-htpasswd -y\n\nhtpasswd -c /etc/nginx/.htpasswd WEBc\n# Вводим пароль P@ssw0rd (2 раза)\n\ncat /etc/nginx/.htpasswd\n\nnginx -t\n\nsystemctl restart nginx\n\n\n=======================================\nПереходим на HQ-CLI, заходим по http://web.au-team.irpo/\nЛогин: WEBc\nПароль: P@ssw0rd\n\nДальше заходим по http://docker.au-team.irpo/\n\nЕсли всё открывается, значит задание выполнено верно."}, {"group": "Модуль 2", "title": "Задание 11", "body": "===HQ-CLI===\r\n\r\napt-get update && apt-get install yandex-browser-stable -y\r\n\r\n• Установку браузера отметьте в отчёте."}, {"group": "Модуль 2", "title": "! Важно", "body": "Стенд Модуля 2 установленный из скрипта имеет недостаток,\nон проявляется при выполнении Задания №5\n\nВам необходимо самостоятельно включить SSH доступ на машинах\nHQ-RTR\nBR-RTR\nHQ-CLI\n\nДля этого на машинах выполняем следующие действия\n\nРедактируем файл sshd_config\n\nvim /etc/openssh/sshd_config\n\nДобавляем одну строчку в самое начало\nPort 2026\n\nsystemctl enable --now sshd"}, {"group": "Модуль 3", "title": "Задание 1", "body": "1) Выполните импорт пользователей в домен au-team.irpo\r\n\r\n===BR-SRV===\r\n\r\n---------импорт пользователей------------\r\n\r\nmount -o loop /dev/sr0 /mnt/ -v\r\n\r\nls -l /mnt/\r\n\r\niconv -f UTF-8 -t UTF-8//IGNORE /mnt/Users.csv > /root/users_fix.csv\r\n\r\ncat << \"EOF\" > import.sh\r\n#!/bin/bash\r\n#\r\nwhile IFS=';' read -r name fam role phone ou street zip city country pass; do\r\nusername=\"$fam\".\"${name:0:1}\"\r\nsamba-tool user create \"${username,,}\" \"P@ssw0rd1\" --given-name=\"$fam\" --\r\nsurname=\"$name\" --job-title=\"$role\" --telephone-number=\"$phone\"\r\n[[ -n \"$ou\" ]] && samba-tool ou create \"OU=$ou\" 2>/dev/null\r\n[[ -n \"$ou\" ]] && samba-tool user move \"${username,,}\" \"OU=$ou\" 2>/dev/null\r\ndone < users_fix.csv\r\nEOF\r\n\r\nbash import.sh\r\n\r\nsamba-tool user list\r\n\r\nsamba-tool user show *имя пользователя*\r\n====================\r\nДля проверки выбираем любого пользователя и входим через GUI на HQ-CLI\r\n\r\nЛогин: любой из списка\r\nПароль: P@ssw0rd1"}, {"group": "Модуль 3", "title": "Задание 2", "body": "2) Выполните настройку центра сертификации\r\n\r\n===ISP===\r\n\r\necho \"PermitRootLogin yes\" >> /etc/openssh/sshd_config\r\nsystemctl restart sshd\r\n\r\n----Установка ПО----\r\n\r\napt-get install openssl openssl-engines -y\r\napt-get install openssl-gost-engine -y\r\ncontrol openssl-gost enabled\r\n\r\nopenssl engine\r\nopenssl ciphers | tr ':' '\\n' | grep GOST\r\n\r\n----Создание сертификатов----\r\n\r\nopenssl genpkey -algorithm gost2012_256 \\\r\n -pkeyopt paramset:TCB -out ca.key\r\n\r\nopenssl req -new -x509 -md_gost12_256 \\\r\n -days 90 -key ca.key -out ca.crt\r\n\r\n#Common Name (ROOT-CA.AU-TEAM.IRPO)\r\n\r\nopenssl genpkey -algorithm gost2012_256 \\\r\n -pkeyopt paramset:A -out web.au-team.irpo.key\r\n\r\nopenssl genpkey -algorithm gost2012_256 \\\r\n -pkeyopt paramset:A -out docker.au-team.irpo.key\r\n\r\nopenssl req -new -md_gost12_256 \\\r\n -key web.au-team.irpo.key \\\r\n -out web.au-team.irpo.csr\r\n\r\n#Common Name ( WEB.AU-TEAM.IRPO )\r\n\r\nopenssl req -new -md_gost12_256 \\\r\n -key docker.au-team.irpo.key \\\r\n -out docker.au-team.irpo.csr\r\n\r\n#Common Name ( DOCKER.AU-TEAM.IRPO )\r\n\r\nopenssl x509 -req -in web.au-team.irpo.csr \\\r\n -CA ca.crt -CAkey ca.key -CAcreateserial \\\r\n -out web.au-team.irpo.crt -days 30\r\n\r\nopenssl x509 -req -in docker.au-team.irpo.csr \\\r\n -CA ca.crt -CAkey ca.key -CAcreateserial \\\r\n -out docker.au-team.irpo.crt -days 30\r\n\r\nls -l\r\n\r\nopenssl engine\r\n\r\nopenssl ciphers | tr ':' '\\n' | grep GOST\r\n\r\n======================\r\n\r\nvim /etc/nginx/sites-available.d/r-proxy.conf\r\n\r\nНужно привести файл конфигурации к следующему виду:\r\n-----\r\nserver {\r\n        listen 443 ssl;\r\n        server_name web.au-team.irpo;\r\n\r\n                ssl_certificate /root/web.au-team.irpo.crt; \r\n                ssl_certificate_key /root/web.au-team.irpo.key; \r\n                ssl_ciphers GOST2012-GOST8912-GOST8912; \r\n                ssl_protocols TLSv1.2; \r\n                ssl_prefer_server_ciphers on;\r\n        location / {\r\n                proxy_pass http://172.16.1.10:8080;\r\n                proxy_set_header Host $host;\r\n                proxy_set_header X-Real-IP $remote_addr;\r\n                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\r\n                proxy_set_header X-Forwarded-Proto $scheme;\r\n                auth_basic \"Restricted Access\";\r\n                auth_basic_user_file /etc/nginx/.htpasswd;\r\n        }\r\n}\r\nserver {\r\n        listen 443 ssl;\r\n        server_name docker.au-team.irpo;\r\n                ssl_certificate /root/docker.au-team.irpo.crt; \r\n                ssl_certificate_key /root/docker.au-team.irpo.key; \r\n                ssl_ciphers GOST2012-GOST8912-GOST8912; \r\n                ssl_protocols TLSv1.2; \r\n                ssl_prefer_server_ciphers on; \r\n        location / {\r\n                proxy_pass http://172.16.2.10:8080;\r\n                proxy_set_header Host $host;\r\n                proxy_set_header X-Real-IP $remote_addr;\r\n                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\r\n                proxy_set_header X-Forwarded-Proto $scheme;\r\n        }\r\n}\r\n-----\r\n\r\nnginx -t\r\n\r\nsystemctl restart nginx\r\n\r\n===HQ-CLI===\r\n\r\nscp root@172.16.1.1:~/ca.crt /etc/pki/ca-trust/source/anchors/\r\n\r\nupdate-ca-trust extract\r\n\r\napt-get install cryptopro-preinstall -y\r\n\r\necho \"https://disk.yandex.ru/d/vgZJjOsNfH8szw\" > /home/user/link.txt\r\n\r\nОткрываем GUI HQ-CLI\r\n\r\nСкачиваем архив, распаковываем архив в домашнюю директорию\r\n\r\n./install_gui.sh\r\n\r\n\r\nНужные пакеты:        \r\n    │ * Криптопровайдер КС1             \r\n    │ * Графические диалоги\r\n    │ * cptools, многоцелевое графическое приложение\r\n    │ * Браузерный плагин + CAdES\r\n    │ * Импортировать корневые сертификаты из ОС\r\n\r\nУстановить\r\n\r\nПропускаем ввод ключа\r\n\r\nПерезапускаем браузер\r\nПереходим по ссылкам:\r\nhttps://web.au-team.irpo\r\nhttps://docker.au-team.irpo\r\n\r\nСайты должены выдать: Сайт использует шифрование по ГОСТу\r\n\r\n===ВНИМАНИЕ!!!===\r\n\r\nЕсли выходит ошибка или предупреждение о ненадёжности, то\r\nсертификат не подтянулся, его нужно подсунуть руками.\r\n\r\nМеню -> Инструменты КриптоПро\r\nВводим вышкой пока не откроется программа\r\nСертификаты -> Установить сертификаты\r\nон находится по пути /etc/pki/ca-trust/source/anchors/\r\nПодтверждаем и снова проверяем сайты.\r\n\r\n\r\nЗадание выполнено!"}, {"group": "Модуль 3", "title": "Задание 3", "body": "3) Настройте защищенный туннель\r\n\r\n===HQ-RTR===\r\n\r\napt-get update && apt-get install openvpn -y\r\n\r\nopenvpn --genkey secret /etc/openvpn/keys/static.key\r\nchmod og-rw /etc/openvpn/keys/static.key\r\n\r\ncat /etc/openvpn/keys/static.key\r\nКопируем всё содержимое\r\n\r\n===BR-RTR===\r\n\r\napt-get update && apt-get install openvpn -y\r\n\r\ncat > /etc/openvpn/keys/static.key\r\nВставляем скопированный ключ с HQ-RTR\r\n\r\nchmod og-rw /etc/openvpn/keys/static.key\r\n\r\nvim /etc/openvpn/client/tun0.conf\r\n\r\nremote 172.16.1.10\r\ndev tun0\r\ncipher AES-256-CBC\r\nauth-nocache\r\nifconfig 192.168.5.2 192.168.5.1\r\nsecret /etc/openvpn/keys/static.key\r\n\r\n\r\nsystemctl enable openvpn-client@tun0\r\n\r\nrm -rf /etc/net/ifaces/gre1/ && reboot\r\n======================================\r\n\r\nВозвращаемся на ===HQ-RTR===\r\n\r\nvim /etc/openvpn/server/tun0.conf\r\n\r\ndev tun0\r\ncipher AES-256-CBC\r\nauth-nocache\r\nifconfig 192.168.5.1 192.168.5.2\r\nsecret /etc/openvpn/keys/static.key\r\n\r\n\r\nsystemctl enable openvpn-server@tun0\r\n\r\nrm -rf /etc/net/ifaces/gre1/ && reboot\r\n======================================\r\n\r\nДальше правим маршрутизацию на обоих Хостах\r\n\r\nsed -i 's/interface gre1/interface tun0/' /etc/frr/frr.conf ; grep tun0 -A6 /etc/frr/frr.conf\r\n\r\nsystemctl restart frr\r\n\r\nip -br -c a\r\n\r\nip r"}, {"group": "Модуль 3", "title": "Задание 4", "body": "###Задание ломает сеть###\r\n\r\n4) Настройте межсетевой экран на сеть в сторону ISP\r\n\r\n===HQ-RTR+BR-RTR===\r\n\r\nnft add table filter\r\n\r\nnft add chain filter INPUT '{ type filter hook input priority 0; policy drop ; }'\r\n\r\n\r\nnft add rule filter INPUT iif \"lo\" accept\r\nnft add rule filter INPUT ct state established,related accept\r\nnft add rule filter INPUT iif enp7s1 icmp type { echo-request, echo-reply } accept\r\nnft add rule filter INPUT iif enp7s1 udp dport { 53, 123 } accept\r\nnft add rule filter INPUT iif enp7s1 tcp dport { 80, 443, 2026, 8080, 53  } accept\r\n\r\nnft add chain filter FORWARD '{ type filter hook forward priority 0; policy drop ; }'\r\nnft add rule filter FORWARD ct state established,related accept\r\nnft add rule filter FORWARD iif enp7s2 oif enp7s1 accept\r\nnft add rule filter FORWARD iif enp7s2 oif tun0 accept\r\nnft add rule filter FORWARD iif enp7s1 oif enp7s2 ct state established,related accept\r\n\t\t\r\nnft add chain filter OUTPUT '{ type filter hook output priority 0; policy accept ; }'\r\n\t\t\r\nnft list ruleset\r\nnft list ruleset > /etc/nftables/nftables.nft\r\nsystemctl restart nftables\r\nnft list ruleset"}, {"group": "Модуль 3", "title": "Задание 5", "body": "5) Настройка принт-сервер CUPS\r\n\r\n===HQ-SRV===\r\n\r\napt-get update && apt-get install cups cups-pdf -y\r\n\r\nvim /etc/cups/cupsd.conf\r\n\r\n<Location />\r\n<Location /admin>\r\n<Location /admin/conf>\r\nAllow all\r\n# Only listen for connections from the local machine.\r\nListen 192.168.1.10:631\r\n\r\nsystemctl enable --now cups\r\n\r\nsystemctl restart cups\r\n\r\nss -ltnp4 | grep 631\r\n\r\n---на HQ-CLI\r\n\r\nМеню -> Параметры печати -> Удаляем принтер -> Добавляем новый -> Поиск сетевого принтера -> 192.168.1.10 -> Отменяем вход -> Выбираем принтер из списка -> Далее (везде)"}, {"group": "Модуль 3", "title": "Задание 6", "body": "6) Реализуйте логирование при помощи rsyslog на устройствах HQ-RTR, BR-RTR, BR-SRV\r\n\r\n===BR-SRV===\r\n\r\n---rsyslog\r\n\r\napt-get install rsyslog -y\r\n\r\ngrep 'Syslog' /etc/systemd/journald.conf\r\n\r\nvim /etc/rsyslog.d/00_common.conf\r\n\r\nраскомментировать\r\n\r\nmodule(load=\"imjournal\") # ...\r\n\r\nmodule(load=\"imuxsock\") # ...\r\n\r\necho -e \"ForwardToSyslog=yes\\nMaxLevelSyslog=warning\" >> /etc/systemd/journald.conf\r\n\r\necho \"*.warn @192.168.1.10\" > /etc/rsyslog.d/10_to_server.conf\r\n\r\nsystemctl restart systemd-journald\r\n\r\nsystemctl enable --now rsyslog\r\n\r\n================================\r\n\r\n===HQ-RTR + BR-RTR===\r\n\r\n---rsyslog\r\n\r\napt-get install rsyslog -y\r\n\r\ngrep 'Syslog' /etc/systemd/journald.conf\r\n\r\nvim /etc/rsyslog.d/00_common.conf\r\n\r\nраскомментировать\r\n\r\nmodule(load=\"imjournal\") # ...\r\n\r\nmodule(load=\"imuxsock\") # ...\r\n\r\necho -e \"ForwardToSyslog=yes\\nMaxLevelSyslog=warning\" >> /etc/systemd/journald.conf\r\n\r\necho \"*.warn @192.168.1.10\" > /etc/rsyslog.d/10_to_server.conf\r\n\r\nsystemctl restart systemd-journald\r\n\r\nsystemctl enable --now rsyslog\r\n\r\n\r\n===HQ-SRV===\r\n\r\n--rsyslog\r\n\r\napt-get install rsyslog-classic rsyslog-server-listen -y\r\n\r\ncat << \"EOF\" > /etc/rsyslog.d/91_template.conf\r\n$template DynFile,\"/opt/%HOSTNAME%/%PROGRAMNAME%.log\"\r\n*.* ?DynFile\r\n& stop\r\nEOF\r\n\r\nvim /etc/rsyslog.d/10_classic.conf\r\n\r\nзакоментировать строку\r\n\r\nmodule(load=\"imuxsock\") ---> #\r\n\r\nsystemctl restart rsyslogd\r\n\r\n======================\r\n\r\nНа хостах HQ-RTR, BR-RTR, BR-SRV выполняем команду\r\n\r\nlogger -p local2.warning \"Syslog test message\"\r\n\r\nПроверяем на HQ-SRV\r\n\r\nls -l /opt\r\n\r\n=========================\r\n\r\napt-get install logrotate -y\r\n\r\n\r\n+++\r\ncat << EOF > /etc/logrotate.d/rsyslog\r\n/opt/**/*.log\r\n{ \r\nweekly\r\nmissingok\r\nnotifempty \r\ncompress \r\nminsize 10M\r\n} \r\nEOF\r\n+++\r\n\r\nПроверка\r\n\r\nlogrotate -d /etc/logrotate.d/rsyslog\r\n\r\nexport EDITOR=/usr/bin/vim\r\n\r\ncrontab -e \r\n\r\n 0\t0\t*\t*\t0\troot /usr/sbin/logrotate /etc/logrotate.d/rsyslog"}, {"group": "Модуль 3", "title": "Задание 7", "body": "7) Насервере HQ-SRV реализуйте мониторинг устройств с помощью открытого программного обеспечения\r\n\r\n===BR-SRV===\r\n\r\napt-get install prometheus-node_exporter -y\r\n\r\nsystemctl enable --now prometheus-node_exporter\r\n\r\nss -ltnp | grep 9100\r\n\r\nsamba-tool dns add br-srv.au-team.irpo au-team.irpo mon CNAME hq-srv.au-team.irpo -U Administrator\r\n\r\nsamba-tool dns query br-srv.au-team.irpo au-team.irpo mon CNAME -U administrator\r\n\r\n\r\n===HQ-SRV===\r\n\r\napt-get install prometheus grafana  prometheus-node_exporter -y\r\n\r\nvim /etc/prometheus/prometheus.yml\r\n\r\n  - job_name: 'prometheus'\r\n\r\n    scrape_interval: 5s\r\n    scrape_timeout: 5s\r\n    static_configs:\r\n      - targets: ['localhost:9090']\r\n\r\n  - job_name: hq-srv\r\n    static_configs:\r\n       - targets: ['192.168.1.10:9100']\r\n  - job_name: br-srv\r\n    static_configs:\r\n      - targets: ['192.168.3.10:9100']\r\n\r\n\r\nsystemctl enable --now prometheus-node_exporter \r\nsystemctl enable --now prometheus\r\nsystemctl enable --now grafana-server \r\nsystemctl status prometheus-node_exporter prometheus grafana-server \r\n\r\n=====\r\n\r\nОткрываем GUI по адресу http://hq-srv.au-team.irpo:9090\r\n\r\nStatus - Target (Должны быть наши сервера)\r\n\r\nhttp://hq-srv.au-team.irpo:3000\r\n\r\nЛогин: admin\r\nПароль: admin\r\n\r\nНовый пароль: P@ssw0rd\r\n\r\nDashboard - New - Import - 1860\r\n\r\nhttp://mon.au-team.irpo:3000"}, {"group": "Дополнительные команды", "title": "Задание 1", "body": "=========BR-SRV=========\n\n------------SambaDC------------\necho \"nameserver 192.168.1.10\" >> /etc/net/ifaces/enp7s1/resolv.conf\n\nsystemctl restart network\n\ncat /etc/resolv.conf\n\nping ya.ru -c 2\n\napt-get update && apt-get install task-samba-dc -y\n\nrm -f /etc/samba/smb.conf\n\nrm -rf {/var/lib/samba, /var/cache/samba}\n\nmkdir -p /var/lib/samba/sysvol\n\nsamba-tool domain provision\n\n\"Везде соглашаемся со значениями по умолчанию (Жмём Enter)\"\n\"Пароль задаём: P@ssw0rd\"\n\nmv /etc/krb5.conf /etc/krb5.conf.back\n\ncp /var/lib/samba/private/krb5.conf /etc/krb5.conf\n\nsystemctl enable --now samba\n\nsystemctl status samba\n\nsamba-tool domain info 127.0.0.1\n\n================================\n------------DNS------------\n\nsamba-tool dns add br-srv.au-team.irpo au-team.irpo hq-srv A 192.168.1.10 -U Administrator\n\nsamba-tool dns add br-srv.au-team.irpo au-team.irpo hq-rtr A 192.168.1.1 -U Administrator\n\nsamba-tool dns add br-srv.au-team.irpo au-team.irpo br-rtr A 192.168.3.1 -U Administrator\n\nsamba-tool dns add br-srv.au-team.irpo au-team.irpo web.au-team.irpo A 172.16.1.1 -U Administrator\n\nsamba-tool dns add br-srv.au-team.irpo au-team.irpo docker.au-team.irpo A 172.16.2.1 -U Administrator\n\nsamba-tool dns query br-srv.au-team.irpo au-team.irpo @ ALL -U administrator\n\nsed -i 's/nameserver 192.168.1.10/nameserver 127.0.0.1/' /etc/net/ifaces/enp7s1/resolv.conf \n\nsystemctl restart network\n\ncat /etc/resolv.conf\n\nkinit administrator@AU-TEAM.IRPO\n\n================================\n------------Users------------\n\nsamba-tool group add hq\n\nfor i in {1..5}; do samba-tool user add hquser$i P@ssw0rd; done\n\nfor i in {1..5}; do samba-tool group addmembers hq hquser$i; done\n\nsamba-tool group listmembers hq\n\n================================\n\n=========HQ-RTR=========\nsed -i 's/192.168.1.10/192.168.3.10/' /etc/dnsmasq.conf; systemctl restart dnsmasq\n\ncat /etc/dnsmasq.conf\n\n=========HQ-CLI=========\n!!!Работаем в графической оболочке HQ-CLI (под user)!!!\n\nна HQ-CLI перезагружаем сеть, проверяем DNS, вводим в домен\n\nacc\n\nПользователи (Аутентификация) -> Галочка (Домен Active Directory) -> Применить -> Пароль P@ssw0rd\nЕсли настроено всё верно, появится окно (Добро пожаловать в домен AU-TEAM.IRPO)\nПерезагружаем машину\n\nМеню -> Выйти -> Перезагрузить\n\nПользователь: hquser1\nПароль: P@ssw0rd\n\n!!!Работаем в консольной оболочке HQ-CLI (под root)!!!\n\ncontrol libnss-role \n(Должна выдать enabled)\n\nroleadd hq wheel\n\necho \"WHEEL_USERS ALL=(ALL:ALL) /bin/cat, /bin/grep, /usr/bin/id\" >> /etc/sudoers\n\ntail /etc/sudoers\n\n!!!Работаем в графической оболочке HQ-CLI (под user)!!!\n\nПерезагружаем машину\n\nМеню -> Выйти -> Перезагрузить\n\nПользователь: hquser1\nПароль: P@ssw0rd\n\nОткрываем терминал и проверяем команду\n\nsudo id\n*вводим пароль*\nsudo cat /etc/resolv.conf\n*вводим пароль*\nsudo grep\n*вводим пароль*"}, {"group": "Дополнительные команды", "title": "Задание 2 3", "body": "=====HQ-SRV=====\n\n==================RAID==================\nlsblk\n\nparted /dev/sdb\n\tmklabel msdos\n\tmkpart primary 1MiB 100%\n\tset 1 raid on\n\tprint\n\tselect /dev/sdc\n\tmklabel msdos\n\tmkpart primary 1MiB 100%\n\tset 1 raid on\n\tprint\n\tquit\n\nmdadm --create /dev/md0 --level=0 --raid-devices=2 /dev/sdb1 /dev/sdc1\n\nmdadm --detail --scan >> /etc/mdadm.conf\n\nmdadm --detail --scan\n\nmkfs.ext4 /dev/md0\n\nmkdir /raid\n\ncp /etc/fstab /etc/fstab.back\n\necho \"/dev/md0 /raid ext4 defaults 0 0 \" >> /etc/fstab\n\nmount -av\n\ndf -T\n\n==================NFS==================\napt-get update && apt-get install nfs-server nfs-utils -y\n\nmkdir /raid/nfs\n\nchmod 777 /raid/nfs\n\ncp /etc/exports /etc/exports.back\n\necho \"/raid/nfs 192.168.2.0/27(rw,no_subtree_check,no_root_squash)\" >> /etc/exports\n\nsystemctl enable --now nfs-server\n\n==================HQ-CLI==================\n!!!Работаем в консольной оболочке HQ-CLI (под root)!!!\n\nmkdir /mnt/nfs\n\nchmod -R 777 /mnt/nfs\n\nshowmount -e hq-srv\n\ncp /etc/fstab /etc/fstab.back\n\necho \"192.168.1.10:/raid/nfs /mnt/nfs nfs rw,soft,_netdev 0 0 \" >> /etc/fstab\n\nmount -av\n\ndf -T\n\n---создать файл на HQ-CLI---\n\ntouch /mnt/nfs/test_file\n\nls -l /mnt/nfs/test_file\n\n---посмотреть на HQ-SRV---\n\nls -l /raid/nfs"}, {"group": "Дополнительные команды", "title": "Задание 4", "body": "=====ISP=====\r\n\r\ncontrol chrony server\r\n\r\nsed -i 's/pool pool.ntp.org iburst/pool pool.ntp.org iburst prefer minstratum 4/' /etc/chrony.conf | grep pool /etc/chrony.conf\r\n\r\nsed -i 's/\\#local stratum 10/local stratum 5/' /etc/chrony.conf | grep \"local stratum\" /etc/chrony.conf\r\n\r\nsystemctl restart chronyd\r\n===============================\r\n\r\n\r\n\r\n===Далее команда выполняется на машинах HQ-SRV, BR-RTR и BR-SRV===\r\n\r\nsed -i 's/pool pool.ntp.org iburst/server 172.16.1.1 iburst/' /etc/chrony.conf && systemctl restart chronyd\r\n\r\n---Через 10 секунд проверяем---\r\n\r\nchronyc sources\r\n===============================\r\n\r\n\r\n\r\n\r\n-==На HQ-CLI выполняем другую команду===\r\n\r\necho \"server 172.16.1.1 iburst\" >> /etc/chrony.conf && systemctl restart chronyd\r\n\r\n---Через 10 секунд проверяем---\r\n\r\nchronyc sources\r\n\r\n\r\n---Вывод команды (chronyc sources) должен быть приблизительно следующим---\r\n\r\nMS Name/IP address         Stratum Poll Reach LastRx Last sample               \r\n===============================================================================\r\n^* 172.16.1.1                    5   6    17     1  +1438ns[  +43us] +/-   38ms"}, {"group": "Дополнительные команды", "title": "Задание 5", "body": "===BR-SRV===\r\n\r\napt-get install ansible sshpass -y\r\n\r\ncp -r /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.back\r\n\r\nrm -rf /etc/ansible/ansible.cfg\r\n\r\nvim /etc/ansible/ansible.cfg\r\n\r\n[defaults]\r\n\r\nhost_key_checking = False\r\ninterpreter_python=/usr/bin/python3\r\ninventory       = /etc/ansible/hosts\r\n\r\n=====================================\r\n\r\nvim /etc/ansible/hosts\r\n\r\nHQ-SRV ansible_user=user ansible_password=resu ansible_port=2026\r\nHQ-RTR ansible_user=net_admin ansible_password=P@ssw0rd ansible_port=2026\r\nBR-RTR ansible_user=net_admin ansible_password=P@ssw0rd ansible_port=2026\r\nHQ-CLI ansible_user=user ansible_password=resu ansible_port=2026\r\n\r\n=====================================\r\n\r\nПроверить состояние службы SSH на хостах\r\n(все должны ответить \"pong\")\r\n\r\nansible all -m ping"}, {"group": "Дополнительные команды", "title": "Задание 6", "body": "===BR-SRV===\r\n\r\napt-get install docker-engine docker-compose-v2 -y\r\n\r\nsystemctl enable --now docker.service\r\n\r\nmount -o loop /dev/sr0 /mnt/ -v\r\n\r\nls -l /mnt/docker/\r\n\r\ncat /mnt/docker/readme.txt\r\n\r\ndocker load < /mnt/docker/site_latest.tar\r\n\r\ndocker load < /mnt/docker/mariadb_latest.tar\r\n\r\ndocker image ls\r\n\r\n\r\n===docker-compose.yml===\r\n\r\ncat << EOF > docker-compose.yml\r\nservices:\r\n  database:\r\n    container_name: db\r\n    image: mariadb:latest\r\n    restart: always\r\n    ports: \r\n      - \"3306:3306\"\r\n    environment:\r\n      MARIADB_DATABASE: testdb\r\n      MARIADB_USER: testc\r\n      MARIADB_PASSWORD: P@ssw0rd\r\n      MARIADB_ROOT_PASSWORD: P@ssw0rd\r\n    volumes:\r\n      - db_data:/var/lib/mysql\r\n      \r\n  app:\r\n    container_name: tespapp\r\n    image: site:latest\r\n    restart: always\r\n    ports: \r\n      - \"8080:8000\"\r\n    environment: \r\n      DB_HOST: database\r\n      DB_PORT: 3306\r\n      DB_NAME: testdb\r\n      DB_USER: testc\r\n      DB_PASS: P@ssw0rd\r\n      DB_TYPE: maria\r\n    depends_on: \r\n      - database\r\nvolumes:\r\n  db_data:\r\nEOF\r\n\r\n==============\r\ndocker compose config\r\n\r\ndocker compose up -d\r\n\r\ndocker ps\r\n\r\nss -ltnp4 | grep 8080\r\n\r\nПереходим на HQ-CLI, заходим по 192.168.3.10:8080\r\n\r\nПометка: По заданию мы должны попадать на сайт через домен\r\ndocker.au-team.irpo, но мы пока этого сделать не можем,\r\nт.к. у нас не настроен реверс-прокси** на ISP (nginx)\r\n**Выполняется в задании №9\r\n\r\nCоздаем запись\r\n\r\ndocker rm -f $(docker ps -qa)\r\n\r\nПроверяем, что сайт перестал работать\r\n\r\ndocker compose up -d\r\n\r\nПроверяем, что сайт поднялся и наша запись осталась"}, {"group": "Дополнительные команды", "title": "Задание 7", "body": "===HQ-SRV===\r\n\r\nmount -o loop /dev/sr0 /mnt/ -v\r\n\r\napt-get install lamp-server -y\r\n\r\ncp /mnt/web/index.php /var/www/html\r\n\r\ncp /mnt/web/logo.png /var/www/html\r\n\r\nsystemctl enable --now mariadb\r\n======================================\r\n\r\nmariadb -e \"CREATE DATABASE webdb;\"\r\n\r\nmariadb -e \"\r\n\r\nCREATE USER 'web'@'localhost' IDENTIFIED BY 'P@ssw0rd';\r\n\r\nGRANT ALL PRIVILEGES ON webdb.* TO 'web'@'localhost';\r\n\r\n\"\r\n\r\nmariadb webdb < /mnt/web/dump.sql\r\n\r\nmariadb -e \"USE webdb; SHOW TABLES;\"\r\n=====================================\r\n\r\nvim /var/www/html/index.php\r\n\r\n$servername = \"localhost\";\r\n\r\n$username = \"web\";\r\n\r\n$password = \"P@ssw0rd\";\r\n\r\n$dbname = \"webdb\";\r\n\r\nsystemctl enable --now httpd2.service\r\n============================================\r\n\r\nПереходим на HQ-CLI, заходим по 192.168.1.10\r\n\r\nПометка: По заданию мы должны попадать на сайт через домен\r\nweb.au-team.irpo + аутенфикация по паролю,\r\nно мы пока этого сделать не можем,\r\nт.к. у нас не настроен реверс-прокси** на ISP (nginx)\r\n**Выполняется в задании №9"}, {"group": "Дополнительные команды", "title": "Задание 8", "body": "===HQ-RTR===\r\n\r\nnft add chain nat prerouting { type nat hook prerouting priority dstnat \\; }\r\n\r\nnft add rule nat prerouting iif \"enp7s1\" tcp dport 2026 dnat to 192.168.1.10\r\n\r\nnft add rule nat prerouting iif \"enp7s1\" tcp dport 8080 dnat to 192.168.1.10:80\r\n\r\nnft list ruleset\r\n\r\nnft list ruleset > /etc/nftables/nftables.nft\r\n\r\nsystemctl restart nftables\r\n\r\nnft list ruleset\r\n================================\r\n\r\n===BR-RTR===\r\n\r\nnft add chain nat prerouting { type nat hook prerouting priority dstnat \\; }\r\n\r\nnft add rule nat prerouting iif \"enp7s1\" tcp dport { 8080, 2026 } dnat to 192.168.3.10\r\n\r\nnft list ruleset\r\n\r\nnft list ruleset > /etc/nftables/nftables.nft\r\n\r\nsystemctl restart nftables\r\n\r\nnft list ruleset\r\n\r\n================================"}, {"group": "Дополнительные команды", "title": "Задание 9 10", "body": "===ISP===\n\napt-get update && apt-get install nginx -y\n\nvim /etc/nginx/sites-available.d/r-proxy.conf\n\n====\nserver {\nlisten 80;\nserver_name web.au-team.irpo;\nlocation / {\nproxy_pass http://172.16.1.10:8080;\nproxy_set_header Host $host;\nproxy_set_header X-Real-IP $remote_addr;\nproxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\nproxy_set_header X-Forwarded-Proto $scheme;\nauth_basic \"Restricted Access\";\nauth_basic_user_file /etc/nginx/.htpasswd;\n}\n}\nserver {\nlisten 80;\nserver_name docker.au-team.irpo;\nlocation / {\nproxy_pass http://172.16.2.10:8080;\nproxy_set_header Host $host;\nproxy_set_header X-Real-IP $remote_addr;\nproxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\nproxy_set_header X-Forwarded-Proto $scheme;\n}\n}\n====\n\nln -s /etc/nginx/sites-available.d/r-proxy.conf /etc/nginx/sites-enabled.d/\n\nnginx -t\n\nsystemctl enable --now nginx\n\nsystemctl status nginx\n\n=======================================\n\napt-get install apache2-htpasswd -y\n\nhtpasswd -c /etc/nginx/.htpasswd WEBc\n# Вводим пароль P@ssw0rd (2 раза)\n\ncat /etc/nginx/.htpasswd\n\nnginx -t\n\nsystemctl restart nginx\n\n\n=======================================\nПереходим на HQ-CLI, заходим по http://web.au-team.irpo/\nЛогин: WEBc\nПароль: P@ssw0rd\n\nДальше заходим по http://docker.au-team.irpo/\n\nЕсли всё открывается, значит задание выполнено верно."}, {"group": "Дополнительные команды", "title": "Задание 11", "body": "===HQ-CLI===\r\n\r\napt-get update && apt-get install yandex-browser-stable -y\r\n\r\n• Установку браузера отметьте в отчёте."}, {"group": "Дополнительные команды", "title": "! Важно", "body": "Стенд Модуля 2 установленный из скрипта имеет недостаток,\nон проявляется при выполнении Задания №5\n\nВам необходимо самостоятельно включить SSH доступ на машинах\nHQ-RTR\nBR-RTR\nHQ-CLI\n\nДля этого на машинах выполняем следующие действия\n\nРедактируем файл sshd_config\n\nvim /etc/openssh/sshd_config\n\nДобавляем одну строчку в самое начало\nPort 2026\n\nsystemctl enable --now sshd"}];
+    const cards = document.getElementById('cards');
+    const tabs = document.getElementById('tabs');
+    const search = document.getElementById('search');
+    const empty = document.getElementById('empty');
+    const copyVisible = document.getElementById('copyVisible');
+    const totalCount = document.getElementById('totalCount');
+
+    totalCount.textContent = DATA.length;
+
+    let activeGroup = 'Все';
+    const groups = ['Все', ...Array.from(new Set(DATA.map(item => item.group)))];
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function renderTabs() {
+      tabs.innerHTML = groups.map(group => `
+        <button class="tab ${group === activeGroup ? 'active' : ''}" data-group="${escapeHtml(group)}">${escapeHtml(group)}</button>
+      `).join('');
+      tabs.querySelectorAll('.tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeGroup = btn.dataset.group;
+          renderTabs();
+          renderCards();
+        });
+      });
+    }
+
+    function getFiltered() {
+      const q = search.value.trim().toLowerCase();
+      return DATA.filter(item => {
+        const groupMatch = activeGroup === 'Все' || item.group === activeGroup;
+        const text = `${item.group} ${item.title} ${item.body}`.toLowerCase();
+        const searchMatch = !q || text.includes(q);
+        return groupMatch && searchMatch;
+      });
+    }
+
+    async function copyText(text, button) {
+      try {
+        await navigator.clipboard.writeText(text);
+        const old = button.textContent;
+        button.textContent = 'Скопировано';
+        setTimeout(() => button.textContent = old, 1200);
+      } catch (e) {
+        alert('Не удалось скопировать автоматически. Выделите текст вручную.');
+      }
+    }
+
+    function renderCards() {
+      const filtered = getFiltered();
+      empty.style.display = filtered.length ? 'none' : 'block';
+      cards.innerHTML = filtered.map((item, index) => `
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <span class="tag">${escapeHtml(item.group)}</span>
+              <h2>${escapeHtml(item.title)}</h2>
+            </div>
+            <button class="btn" data-copy="${index}">Копировать блок</button>
+          </div>
+          <pre><code>${escapeHtml(item.body)}</code></pre>
+        </article>
+      `).join('');
+
+      cards.querySelectorAll('[data-copy]').forEach((button, index) => {
+        button.addEventListener('click', () => copyText(filtered[index].body, button));
+      });
+    }
+
+    copyVisible.addEventListener('click', () => {
+      const filtered = getFiltered();
+      const text = filtered.map(item => `### ${item.group} — ${item.title}\n\n${item.body}`).join('\n\n');
+      copyText(text, copyVisible);
+    });
+
+    search.addEventListener('input', renderCards);
+
+    renderTabs();
+    renderCards();
+  </script>
+</body>
+</html>
